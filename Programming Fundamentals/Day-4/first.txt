@@ -1,0 +1,98 @@
+-- 1) DROP if exist (safe for re-running the script)
+DROP TABLE IF EXISTS employees_copy;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS employees;
+
+-- 2) Create employees table (with primary key)
+CREATE TABLE employees (
+  employeeNumber INT PRIMARY KEY,
+  lastName VARCHAR(50) NOT NULL,
+  firstName VARCHAR(50) NOT NULL,
+  extension VARCHAR(10),
+  email VARCHAR(100) UNIQUE,
+  officeCode VARCHAR(10),
+  reportsTo INT,               -- could reference another employee
+  jobTitle VARCHAR(50)
+);
+
+-- 3) Insert employees (Indian names, unique employeeNumber)
+INSERT INTO employees (employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle) VALUES
+(1703, 'Kumar',   'Suresh', 'x19200', 'suresh.kumar@example.in', 'OC1', NULL, 'Sales Rep'),
+(1704, 'Sharma',  'Priya',  'x19201', 'priya.sharma@example.in', 'OC2', 1703, 'Finance Manager'),
+(1705, 'Singh',   'Rajesh', 'x19202', 'rajesh.singh@example.in', 'OC3', 1704, 'HR Manager');
+
+-- 4) Create customers table (with primary key and FK to employees)
+CREATE TABLE customers (
+  customerNumber INT PRIMARY KEY,
+  customerName VARCHAR(100) NOT NULL,
+  contactLastName VARCHAR(50) NOT NULL,
+  contactFirstName VARCHAR(50) NOT NULL,
+  phone VARCHAR(20),
+  addressLine1 VARCHAR(100),
+  addressLine2 VARCHAR(100),
+  city VARCHAR(50),
+  state VARCHAR(50),
+  postalCode VARCHAR(15),
+  country VARCHAR(50),
+  salesRepEmployeeNumber INT,  -- sales rep assigned
+  creditLimit DOUBLE,
+  CONSTRAINT fk_salesrep FOREIGN KEY (salesRepEmployeeNumber)
+    REFERENCES employees(employeeNumber)
+    ON DELETE SET NULL   -- if employee removed, keep customer but null the rep
+    ON UPDATE CASCADE
+);
+
+-- 5) Insert customers (Indian addresses + assign a sales rep)
+INSERT INTO customers (customerNumber, customerName, contactLastName, contactFirstName, phone,
+                       addressLine1, addressLine2, city, state, postalCode, country,
+                       salesRepEmployeeNumber, creditLimit)
+VALUES
+(1706, 'Jhonys Enterprises', 'Rao',    'Jhony',  '9876543210', 'H No 12-34/A', 'Ammerpet', 'Hyderabad', 'Telangana', '500016', 'India', 1703, 5000.00),
+(1707, 'Aarav Traders',      'Shah',   'Amit',   '9123456780', 'Shop 5, MG Road', NULL, 'Mumbai', 'Maharashtra', '400001', 'India', 1704, 15000.00),
+(1708, 'Gopal & Sons',       'Gopal',  'Gopal',  '9988776655', 'Plot 23', 'Phase 2', 'Bengaluru', 'Karnataka', '560001', 'India', 1705, 8000.00);
+
+-- 6) Simple SELECT examples (same as your queries, corrected)
+SELECT contactLastName, contactFirstName, phone FROM customers;
+
+SELECT COUNT(*) AS total_customers FROM customers;
+
+SELECT contactLastName, contactFirstName, phone
+FROM customers
+WHERE country = 'India';
+
+-- 7) Create a copy table from employees (snapshot)
+CREATE TABLE employees_copy AS
+SELECT * FROM employees;
+
+-- 8) Demonstrate UPDATE (change extension for employee 1703)
+-- If safe updates block prevents it in your environment, you can keep SET SQL_SAFE_UPDATES=0
+UPDATE employees
+SET extension = '19320'
+WHERE employeeNumber = 1703;
+
+-- Verify update
+SELECT employeeNumber, lastName, firstName, extension FROM employees WHERE employeeNumber = 1703;
+
+-- 9) Transaction demo: delete employee 1704 then rollback so it's restored.
+-- Start transaction
+START TRANSACTION;
+
+-- Show employee exists before delete
+SELECT * FROM employees WHERE employeeNumber = 1704;
+
+-- Delete (this is staged inside the transaction)
+DELETE FROM employees WHERE employeeNumber = 1704;
+
+-- Verify deletion inside transaction (this shows no row)
+SELECT * FROM employees WHERE employeeNumber = 1704;
+
+-- Now rollback to undo the deletion
+ROLLBACK;
+
+-- Verify rollback — employee 1704 must be back
+SELECT * FROM employees WHERE employeeNumber = 1704;
+
+-- 10) If you want to actually remove employee 1704 permanently, use COMMIT instead of ROLLBACK:
+-- START TRANSACTION;
+-- DELETE FROM employees WHERE employeeNumber = 1704;
+-- COMMIT;
