@@ -1,0 +1,5 @@
+ <mapping class="com.example.granuality.EmployeeCoarse"/>
+        <mapping class="com.example.granuality.Address"/>
+        <mapping class="com.example.granuality.EmployeeEmbedded"/>
+        <mapping class="com.example.granuality.Document"/>
+        <mapping class="com.example.granuality.Student"/>
