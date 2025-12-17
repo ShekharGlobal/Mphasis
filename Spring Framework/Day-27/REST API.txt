@@ -1,0 +1,28 @@
+1. Post-http://localhost:2027/bank/customer
+
+{
+  "customerName": "Ajay",
+  "customerContactNumber": 999999999
+}
+2.Post
+http://localhost:2027/bank/customer/1/loan
+
+[
+  {
+    "loanType": "Home Loan",
+    "loanAmount": 5000000,
+    "repaymentYears": 20,
+    "monthlyDue": 35000
+  },
+  {
+    "loanType": "Car Loan",
+    "loanAmount": 800000,
+    "repaymentYears": 5,
+    "monthlyDue": 15000
+  }
+]
+
+3.Get
+http://localhost:2027/bank/customers/1
+
+
