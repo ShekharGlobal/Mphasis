@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage API Example</title>
+</head>
+<body>
+    <h2>Web Storage API Example</h2>
+
+    <!-- Input fields and buttons for localStorage -->
+    <h3>localStorage Example</h3>
+    <input type="text" id="localInput" placeholder="Enter localStorage value">
+    <button onclick="setLocalStorage()">Set localStorage</button>
+    <button onclick="getLocalStorage()">Get localStorage</button>
+    <button onclick="removeLocalStorage()">Remove localStorage</button>
+    <p id="localOutput"></p>
+
+    <!-- Input fields and buttons for sessionStorage -->
+    <h3>sessionStorage Example</h3>
+    <input type="text" id="sessionInput" placeholder="Enter sessionStorage value">
+    <button onclick="setSessionStorage()">Set sessionStorage</button>
+    <button onclick="getSessionStorage()">Get sessionStorage</button>
+    <button onclick="removeSessionStorage()">Remove sessionStorage</button>
+    <p id="sessionOutput"></p>
+
+    <script>
+        // Function to set data in localStorage
+        function setLocalStorage() {
+            const inputValue = document.getElementById('localInput').value;
+            localStorage.setItem('myLocalStorageKey', inputValue);
+            document.getElementById('localOutput').innerHTML = 'Value set in localStorage: ' + inputValue;
+        }
+
+        // Function to get data from localStorage
+        function getLocalStorage() {
+            const storedValue = localStorage.getItem('myLocalStorageKey');
+            if (storedValue !== null) {
+                document.getElementById('localOutput').innerHTML = 'Value retrieved from localStorage: ' + storedValue;
+            } else {
+                document.getElementById('localOutput').innerHTML = 'No value found in localStorage.';
+            }
+        }
+
+        // Function to remove data from localStorage
+        function removeLocalStorage() {
+            localStorage.removeItem('myLocalStorageKey');
+            document.getElementById('localOutput').innerHTML = 'localStorage value removed.';
+        }
+
+        // Function to set data in sessionStorage
+        function setSessionStorage() {
+            const inputValue = document.getElementById('sessionInput').value;
+            sessionStorage.setItem('mySessionStorageKey', inputValue);
+            document.getElementById('sessionOutput').innerHTML = 'Value set in sessionStorage: ' + inputValue;
+        }
+
+        // Function to get data from sessionStorage
+        function getSessionStorage() {
+            const storedValue = sessionStorage.getItem('mySessionStorageKey');
+            if (storedValue !== null) {
+                document.getElementById('sessionOutput').innerHTML = 'Value retrieved from sessionStorage: ' + storedValue;
+            } else {
+                document.getElementById('sessionOutput').innerHTML = 'No value found in sessionStorage.';
+            }
+        }
+
+        // Function to remove data from sessionStorage
+        function removeSessionStorage() {
+            sessionStorage.removeItem('mySessionStorageKey');
+            document.getElementById('sessionOutput').innerHTML = 'sessionStorage value removed.';
+        }
+    </script>
+</body>
+</html>

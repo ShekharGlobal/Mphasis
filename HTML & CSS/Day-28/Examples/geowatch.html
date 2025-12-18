@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation watchPosition Example</title>
+</head>
+<body>
+    <h2>Track My Position</h2>
+    <button onclick="startTracking()">Start Tracking</button>
+    <button onclick="stopTracking()">Stop Tracking</button>
+    <p id="tracking-status"></p>
+    <p id="tracking-location"></p>
+
+    <script>
+        let watchID;
+
+        function startTracking() {
+            if (navigator.geolocation) {
+                watchID = navigator.geolocation.watchPosition(showPosition, showError);
+                document.getElementById("tracking-status").innerHTML = "Tracking started...";
+            } else {
+                document.getElementById("tracking-status").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function stopTracking() {
+            if (watchID) {
+                navigator.geolocation.clearWatch(watchID);
+                document.getElementById("tracking-status").innerHTML = "Tracking stopped.";
+                document.getElementById("tracking-location").innerHTML = "";
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("tracking-location").innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        }
+
+        function showError(error) {
+            document.getElementById("tracking-status").innerHTML = "";
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("tracking-location").innerHTML = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("tracking-location").innerHTML = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("tracking-location").innerHTML = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("tracking-location").innerHTML = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
