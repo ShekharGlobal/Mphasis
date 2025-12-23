@@ -1,0 +1,15 @@
+2. The regular expression: /\b\w/g
+
+This is the key part.
+
+\b → word boundary
+Matches the position where a word starts (between a non-word character and a word character)
+
+\w → word character
+Matches letters (a–z, A–Z), digits (0–9), or underscore (_)
+
+/g → global flag
+Apply the match to all occurrences, not just the first one
+
+Together, \b\w means:
+“the first character of every word”
