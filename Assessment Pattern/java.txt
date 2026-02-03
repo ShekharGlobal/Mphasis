@@ -1,0 +1,65 @@
+1.which interface is not allowed duplicates values and should be print natural order--- 	(Set)
+2.byte range--- 	(-128 to 127)
+
+3.Local repositorty stores --- 	(${Local.home}/.m2/repository))
+4.which is the function works on map--- 	(put())
+5.class X1 { int x = 9; public static void main(String[] args) { int x = 10; X1 ob = new X1(); System.out.println(ob.x); // Accessing the instance variable 'x' } } ans-9
+6.stream in collection
+ ans-collectionObject.stream()
+7.what is the return type of the hashCode()?  Answer:int
+8.What makes a class abstract?
+Answer:The class must not have method definitions.
+9.which elements are used to identify a dependent artifact in a pom.xml file? 	(version, groupid, artifactid)
+10.what is true about mvn clean? 	(It cleans up artifacts created by prior builds)
+11.Which is  not java keyword
+Continue
+Break
+Goto(Answer)
+Throw
+12.Which class is used to load a driver.
+Answer:Class .forName().
+13.Integer i=new Integer(10);
+Integer j=new INteger(20);
+Integer k=i+j;
+Autoboxing
+Casting
+Overriding
+Overloading
+Ans Autoboxing.
+
+14.Result set executes by using 
+Answer:executeQuery()
+15. Driver connection
+Answer:DriverManager.getConnection()
+16.User-defined exceptions in Java are typically 
+Answer checked exceptions.
+17.Duplicate and natural ordered
+Answer:Hashset
+18.Interface method can't be 
+Answer:final
+19.keyword not in java
+Answer:@Ignore
+20.old project and new project
+Answer:both are aiming at different objects
+21.executes after each method 
+Answer:@after
+22.assertequals(boolean expected, boolean actual)
+23.finally-to clean up open resource
+
+24.declare constant variable in java
+Answer:final
+25.printer question:high cohesion and loose coupling
+26.Here is the correct Java code for what is written in your image.
+27.import java.util.*;import java.util.stream.*; 
+public class Main {
+ public static void main(String[] args) { 
+int arr[] = {55, 12, 34, 56, 100, 101, 102, 103, 104, 101, 110, 111};
+ // Convert int[] → List<Integer> List<Integer> collection =Arrays.stream(arr) .boxed() .toList(); // Print size of collection System.out.println(collection.size()); // Get distinct stream Stream<Integer> stream = collection.stream().distinct(); // Print distinct values stream.forEach(System.out::println); } } 
+Answer:12
+28.Which one is not in executeUpdate()
+Select
+Insert
+Update
+Delete
+Answer:select
+29.Linked list to reverse:using iterator

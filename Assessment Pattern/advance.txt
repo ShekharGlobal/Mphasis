@@ -1,0 +1,53 @@
+[14:31, 15/12/2025] +91 95915 30547: 1.   A company wants to expose a Operation to its clients like tranfer of money from one to another.
+
+-post
+[14:31, 15/12/2025] +91 95915 30547: 2.  Where is the jar of dynamic web content located.
+
+-WEB-INF/lib/
+[14:31, 15/12/2025] +91 95915 30547: 3.  U don't want to expose the resources to the web client, where u will keep the resource.(Single option)
+
+-WEB-INF/ and META-INF/ 
+
+But web-inf stores config,jsp,libraries 
+
+Meta-inf stores meta data about app don't not serve browser (client) 
+
+Answer according to question
+[14:31, 15/12/2025] +91 95915 30547: 4.  What is required in jsp:use bean
+
+-id and class
+[14:31, 15/12/2025] +91 95915 30547: 5.  IsThreadSafe=true
+Select two correct options about above statement.
+
+-default thread safe of jsp is true
+-by setting it true makes jsp pages slower
+[14:31, 15/12/2025] +91 95915 30547: 6.how to set variables that is accessible by all servlets of same session.(Multiple options)
+
+-request.setAttribute("name",value);
+-request.getSession.setAttribute("name",value);
+[14:35, 15/12/2025] +91 82960 93862: Everyone come back soon
+Sir is starting the session
+[14:51, 15/12/2025] +91 95915 30547: 7.  How to set MIME(multipurpose internet mail extension type) 
+
+a.import
+b.extends
+c.info
+d.contentType
+
+Ans-d
+[14:51, 15/12/2025] +91 95915 30547: 8.
+Long date=request.getDateHeader("Head");
+respone.setContentType("text/plain");
+response.getPrintWriter().write(""+date);
+
+What is output?
+
+Ans - Option 1(successful printed with formatted output)
+[14:51, 15/12/2025] +91 95915 30547: 9.what cannot be overriden?
+
+A.jspInit()
+B._jspService()
+C.jspDestroy()
+D.jspValidate()
+
+Ans- B
