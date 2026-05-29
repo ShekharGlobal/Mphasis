@@ -1,0 +1,167 @@
+
+py -m pip install fastapi uvicorn pandas scikit-learn joblib
+python data_ingestion.py
+py train.py
+py model_training.py
+py save_model.py
+py predict.py
+uvicorn app:app --reload
+http://127.0.0.1:8000/docs
+
+predict post
+{
+  "CustomerID": 3001,
+  "Age": 35,
+  "Gender": 1,
+  "MonthlyCharges": 5000,
+  "Tenure": 24
+}
+
+=====================================================
+
+
+Docker
+
+Step 2 → Install Docker Desktop
+
+docker --version
+
+
+
+docker build -t churn-api .
+docker build --no-cache -t churn-api .
+
+docker run -p 8000:8000 churn-api
+----------------------------------------------------------
+---kodekloud-----
+git clone https://github.com/ShekharGlobal/MLOps.git
+cd MLOps
+ls -la
+docker build --no-cache -t churn-api .
+docker run -d --name churn-container -p 8000:8000 churn-api
+docker ps -a
+-----------------------------------------------------------
+
+http://127.0.0.1:8000/docs
+
+{
+  "CustomerID": 3001,
+  "Age": 35,
+  "Gender": 1,
+  "MonthlyCharges": 5000,
+  "Tenure": 24
+}
+
+{
+  "CustomerID": 4001,
+  "Age": 22,
+  "Gender": 0,
+  "MonthlyCharges": 2500,
+  "Tenure": 2
+}
+
+
+D:/ML/docker-compose.yml
+docker compose up --build -d
+docker compose up -d
+docker compose ps
+
+----------------------------------------------------------
+docker run -d --name churn-api -p 8000:8000 churn-api
+
+docker run -d --name prometheus -p 9090:9090 prom/prometheus
+
+docker run -d --name grafana -p 3000:3000 grafana/grafana
+-------------------------------------------------------------
+
+http://127.0.0.1:8000/docs
+
+
+==================================================================
+
+Next Big MLOps Step → CI/CD Pipeline 🚀
+
+Now we automate:
+
+Build
+Testing
+Deployment
+
+D:/ML/.github/workflows
+D:/ML/.github/workflows/main.yml
+
+================================================
+
+git init
+git add .
+git commit -m "Initial MLOps project"
+git branch -M main
+git remote add origin https://github.com/shekharglobal/mlops-project.git
+git push -u origin main
+
+
+.gitignore
+# Python cache
+__pycache__/
+*.pyc
+====================================
+
+docker login
+
+docker tag churn-api 110044/churn-api:v1
+
+docker push 110044/churn-api:v1
+=============================================
+
+docker pull 110044/churn-api:v1
+
+docker run -p 8000:8000 110044/churn-api:v1
+
+http://127.0.0.1:8000/docs
+
+
+Example pattern:
+
+MonthlyCharges	Tenure	Churn
+High	Long	No
+Low	Very Short	Yes
+
+Model tries to learn:
+
+"What kind of customers usually leave?"
+======================================================================================
+
+py -m pip install prometheus-fastapi-instrumentator
+
+py -m uvicorn app:app --reload
+
+docker pull grafana/grafana
+docker run -d --name grafana -p 3000:3000 grafana/Grafana
+docker start grafana
+
+http://127.0.0.1:3000
+
+docker run -d --name prometheus -p 9090:9090 prom/prometheus
+docker start prometheus
+
+http://host.docker.internal:9090
+===========================================================================
+
+drift
+
+py -m pip install evidently==0.4.16
+py drift_detection.py
+
+
+
+=================================================================
+Kubernetes
+
+kubectl get nodes
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+kubectl get pods
+kubectl get services
+
