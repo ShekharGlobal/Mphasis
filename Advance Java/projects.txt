@@ -1,0 +1,40 @@
+Project 6: AI Agent Pipeline
+
+Azure OpenAI Enterprise RAG
+
+1. ML Pipeline ✅
+
+2. MLOps Pipeline ✅
+
+3. PySpark Data Engineering Pipeline
+
+4. SQL Data Warehouse Pipeline
+
+5. RAG Pipeline
+
+6. AI Agent Pipeline
+
+7. Azure OpenAI Enterprise Pipeline
+
+
+Interview Coverage
+Area	Coverage
+Python	✅
+SQL	Project 4
+PySpark	Project 3
+Machine Learning	Project 1
+MLOps	Project 2
+RAG	Project 5
+AI Agents	Project 6
+Azure OpenAI	Project 7
+Data Engineering	Projects 3 & 4
+LLMOps	Projects 5 & 6
+
+If you're preparing for interviews over the next 30-45 days, I would build them in this order:
+
+1. PySpark Pipeline
+2. RAG Pipeline
+3. AI Agent Pipeline
+4. Azure OpenAI Pipeline
+
+Those four, combined with your existing ML and MLOps projects, will cover almost everything in your TOC and most AI Data Engineer interview scenarios.

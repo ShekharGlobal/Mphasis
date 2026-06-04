@@ -1,0 +1,31 @@
+git clone https://github.com/ShekharGlobal/Enterprise-AI-Agent.git
+
+cd Enterprise-AI-Agent
+
+ls
+
+docker --version
+docker build -t enterprise-ai-agent:v1 .
+
+docker images
+docker run -d -p 8000:8000 --name enterprise-agent enterprise-ai-agent:v1
+docker ps
+docker logs enterprise-agent
+
+{
+  "question":"25*45"
+}
+
+docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=sales_dw -p 3306:3306 mysql:latest
+
+docker network create ai-network
+
+docker network connect ai-network mysql-db
+
+docker build -t enterprise-ai-agent:v2 .
+
+docker run -d --network ai-network -p 8000:8000 --name enterprise-agent-v2 enterprise-ai-agent:v2
+
+{
+"question":"show category sales"
+}

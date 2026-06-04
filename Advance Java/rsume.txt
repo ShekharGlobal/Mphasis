@@ -1,0 +1,58 @@
+pip install -r requirements.txt
+
+ py Calculator Tool
+  py SQL Tool
+ py ML Tool
+
+
+	
+Response body
+Download
+{
+  "selected_tool": "calculator",
+  "result": {
+    "tool": "calculator",
+    "result": "1125"
+  }
+}
+
+Response body
+Download
+{
+  "selected_tool": "sql",
+  "result": {
+    "tool": "sql",
+    "data": [
+      {
+        "category": "Electronics",
+        "Revenue": 135000
+      },
+      {
+        "category": "Fashion",
+        "Revenue": 6700
+      }
+    ]
+  }
+}
+
+Response body
+Download
+{
+  "selected_tool": "ml",
+  "result": {
+    "tool": "ml",
+    "input": {
+      "CustomerID": 1001,
+      "Age": 25,
+      "Gender": "Male",
+      "MonthlyCharges": 2500,
+      "Tenure": 12
+    },
+    "prediction": "No Churn"
+  }
+}
+
+resume
+Enterprise GenAI Agent (RAG + LLMOps)
+
+Built an Enterprise AI Agent using FastAPI, LangChain, ChromaDB, Ollama, MySQL, and Scikit-Learn. Implemented a planner-executor architecture that dynamically selects tools for document question answering (RAG), SQL analytics, ML-based churn prediction, and calculations. Developed REST APIs, Swagger documentation, Dockerized deployment, and integrated vector search with local LLM inference using Ollama. Demonstrates GenAI, RAG, AI Agents, and LLMOps concepts in a production-style architecture.
