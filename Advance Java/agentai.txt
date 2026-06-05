@@ -1,0 +1,58 @@
+python -m pip install -r requirements.txt
+python -m uvicorn app:app --reload
+
+http://127.0.0.1:8000/docs
+
+{
+  "question":"25*45"
+}
+
+==============================================
+{
+  "question": "How many leaves are allowed?"
+}
+
+{
+  "question": "How many leaves are allowed?"
+}
+{
+  "question": "What is leave policy?"
+}
+============================================
+
+{
+  "question": "show category sales"
+}
+
+{
+  "question": "show revenue"
+}
+
+{
+  "question": "total revenue"
+}
+
+====================================================
+
+{
+  "question": "predict churn",
+  "payload": {
+    "CustomerID": 1001,
+    "Age": 25,
+    "Gender": "Male",
+    "MonthlyCharges": 2500,
+    "Tenure": 12
+  }
+}
+------
+{
+  "question": "predict churn",
+  "payload": {
+    "CustomerID": 2001,
+    "Age": 55,
+    "Gender": "Female",
+    "MonthlyCharges": 8000,
+    "Tenure": 2
+  }
+}
+============================================
